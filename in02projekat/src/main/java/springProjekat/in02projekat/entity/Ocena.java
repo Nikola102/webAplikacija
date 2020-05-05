@@ -10,11 +10,11 @@ public class Ocena implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
-	private int idgledaoc;
+	@ManyToOne
+	private Korisnik korisnik;
 	
-	@Column
-	private int idfilm;
+	@ManyToOne
+	private Film film;
 	
 	@Column
 	private int dataocena;
@@ -27,20 +27,20 @@ public class Ocena implements Serializable{
 		this.id = id;
 	}
 
-	public int getIdgledaoc() {
-		return idgledaoc;
+	public Korisnik getKorisnik() {
+		return korisnik;
 	}
 
-	public void setIdgledaoc(int idgledaoc) {
-		this.idgledaoc = idgledaoc;
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
 	}
 
-	public int getIdFilm() {
-		return idfilm;
+	public Film getFilm() {
+		return film;
 	}
 
-	public void setIdFilm(int idgilm) {
-		this.idfilm = idgilm;
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 
 	public int getDataocena() {
@@ -53,8 +53,10 @@ public class Ocena implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Ocena [id=" + id + ", idgledaoc=" + idgledaoc + ", idfilm=" + idfilm + ", dataocena=" + dataocena + "]";
+		return "Ocena [id=" + id + ", korisnik=" + korisnik + ", film=" + film + ", dataocena=" + dataocena + "]";
 	}
+
+	
 
 	
 }

@@ -11,11 +11,11 @@ public class RasporedOdrzavanjaFilmova implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
-	private int idfilm;
+	@ManyToOne
+	private Film film;
 	
-	@Column
-	private int idbioskop;
+	@ManyToOne
+	private Bioskop bioskop;
 	
 	@Column
 	private Date date;
@@ -26,25 +26,25 @@ public class RasporedOdrzavanjaFilmova implements Serializable{
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getIdfilm() {
-		return idfilm;
+	public Film getFilm() {
+		return film;
 	}
 
-	public void setIdfilm(int idfilm) {
-		this.idfilm = idfilm;
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 
-	public int getIdbioskop() {
-		return idbioskop;
+	public Bioskop getBioskop() {
+		return bioskop;
 	}
 
-	public void setIdbioskop(int idbioskop) {
-		this.idbioskop = idbioskop;
+	public void setBioskop(Bioskop bioskop) {
+		this.bioskop = bioskop;
 	}
 
 	public Date getDate() {
@@ -65,10 +65,10 @@ public class RasporedOdrzavanjaFilmova implements Serializable{
 
 	@Override
 	public String toString() {
-		return "RasporedOdrzavanjaFilmova [id=" + id + ", idfilm=" + idfilm + ", idbioskop=" + idbioskop + ", date="
-				+ date + ", cena=" + cena + "]";
+		return "RasporedOdrzavanjaFilmova [id=" + id + ", film=" + film + ", bioskop=" + bioskop + ", date=" + date
+				+ ", cena=" + cena + "]";
 	}
 
-
+	
 	
 }

@@ -1,6 +1,8 @@
 package springProjekat.in02projekat.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -18,4 +20,11 @@ public class Sala implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Bioskop bioskop;
+	
+	@ManyToMany
+	@JoinTable(name = "TerminskiRaporedSala",
+				joinColumns = @JoinColumn(name = "sala_id", referencedColumnName = "id"),
+				inverseJoinColumns = @JoinColumn(name= "lista_id",referencedColumnName = "id")
+				)
+	private Set<TerminskaListaProjekcija> terminskirasporedsala = new HashSet<>();
 }

@@ -1,6 +1,8 @@
 package springProjekat.in02projekat.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -21,13 +23,37 @@ public class Film implements Serializable {
 	
 	@Column
 	private int trajanje;
-	
-	@Column
-	private int brojocena;
-	
+		
 	@Column
 	private double srednjaocena;
-
+	
+	@ManyToMany
+	@JoinTable(name = "Odgledani_filmovi" ,
+			joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "id"),
+		    inverseJoinColumns = @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
+			)
+	private Set<Korisnik> korisnici = new HashSet<Korisnik>();
+	 
+	@ManyToMany
+	@JoinTable(name = "Biti_odgledani",
+			joinColumns = @JoinColumn (name = "film_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
+			)
+	private Set<Korisnik> buducikorisnici = new HashSet<Korisnik>();
+	
+	@OneToMany(mappedBy = "film")
+	private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();
+	
+	@ManyToMany
+	@JoinTable(name = "TerminskiRaporedFilm",
+				joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "id"),
+				inverseJoinColumns = @JoinColumn(name= "lista_id",referencedColumnName = "id")
+				)
+	private Set<TerminskaListaProjekcija> terminskirasporedfilm = new HashSet<>();
+	
+	@OneToMany(mappedBy = "film")
+	private Set<Ocena> ocene= new HashSet<>(); 
+	
 	public Long getId() {
 		return id;
 	}
@@ -68,14 +94,6 @@ public class Film implements Serializable {
 		this.trajanje = trajanje;
 	}
 
-	public int getBrojocena() {
-		return brojocena;
-	}
-
-	public void setBrojocena(int brojocena) {
-		this.brojocena = brojocena;
-	}
-
 	public double getSrednjaocena() {
 		return srednjaocena;
 	}
@@ -87,7 +105,7 @@ public class Film implements Serializable {
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", naziv=" + naziv + ", opis=" + opis + ", zanr=" + zanr + ", trajanje=" + trajanje
-				+ ", brojocena=" + brojocena + ", srednjaocena=" + srednjaocena + "]";
+				 + ", srednjaocena=" + srednjaocena + "]";
 	}
 
 	

@@ -31,6 +31,9 @@ public class Bioskop implements Serializable {
 	private Set<Sala> sale = new HashSet<Sala>();
 	//RASPORED ODRZAVANJA FILMOVA
 
+	@OneToMany(mappedBy = "bioskop")
+	private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();
+	
 	public Long getId() {
 		return id;
 	}

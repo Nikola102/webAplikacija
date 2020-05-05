@@ -44,14 +44,17 @@ public class Korisnik implements Serializable {
 	@Column
 	private Boolean active;
 
-	@OneToMany
+	@ManyToMany(mappedBy = "korisnici")
 	private Set <Film> odgledano = new HashSet<>();
 	
-	@OneToMany
-	private Set <Film> gledati = new HashSet<>();
+	@ManyToMany(mappedBy = "buducikorisnici")
+	private Set<Film> zagledati = new HashSet<Film>();
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Bioskop bioskop;
+	
+	@OneToMany(mappedBy = "korisnik")
+	private Set<Ocena> ocene= new HashSet<>(); 
 	
 	public Long getId() {
 		return Id;

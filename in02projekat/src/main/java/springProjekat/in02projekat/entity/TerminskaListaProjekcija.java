@@ -2,8 +2,12 @@ package springProjekat.in02projekat.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
+
+
 
 @Entity
 public class TerminskaListaProjekcija implements Serializable{
@@ -11,14 +15,12 @@ public class TerminskaListaProjekcija implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
-	private int idfilm;
+	@ManyToMany(mappedBy = "terminskirasporedfilm")
+	private Set <Film> filmoviProjekcija = new HashSet<>();
 	
-	@Column
-	private int idbioskop;
 	
-	@Column
-	private int idsala;
+	@ManyToMany(mappedBy = "terminskirasporedsala")
+	private Set <Sala> salaProjekcija = new HashSet<>();
 	
 	@Column
 	private Date date;
@@ -34,52 +36,5 @@ public class TerminskaListaProjekcija implements Serializable{
 		this.id = id;
 	}
 
-	public int getIdfilm() {
-		return idfilm;
-	}
-
-	public void setIdfilm(int idfilm) {
-		this.idfilm = idfilm;
-	}
-
-	public int getIdbioskop() {
-		return idbioskop;
-	}
-
-	public void setIdbioskop(int idbioskop) {
-		this.idbioskop = idbioskop;
-	}
-
-	public int getIdsala() {
-		return idsala;
-	}
-
-	public void setIdsala(int iddala) {
-		this.idsala = iddala;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public int getBrrezervacija() {
-		return brrezervacija;
-	}
-
-	public void setBrrezervacija(int brrezervacija) {
-		this.brrezervacija = brrezervacija;
-	}
-
-	@Override
-	public String toString() {
-		return "TerminskaListaProjekcija [id=" + id + ", idfilm=" + idfilm + ", idbioskop=" + idbioskop + ", idsala="
-				+ idsala + ", date=" + date + ", brrezervacija=" + brrezervacija + "]";
-	}
-
-	
 	
 }
