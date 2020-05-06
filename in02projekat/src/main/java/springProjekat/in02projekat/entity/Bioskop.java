@@ -29,7 +29,6 @@ public class Bioskop implements Serializable {
 	
 	@OneToMany(mappedBy = "bioskop", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Sala> sale = new HashSet<Sala>();
-	//RASPORED ODRZAVANJA FILMOVA
 
 	@OneToMany(mappedBy = "bioskop")
 	private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();

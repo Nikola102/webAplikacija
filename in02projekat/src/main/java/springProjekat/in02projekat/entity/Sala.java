@@ -21,10 +21,7 @@ public class Sala implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Bioskop bioskop;
 	
-	@ManyToMany
-	@JoinTable(name = "TerminskiRaporedSala",
-				joinColumns = @JoinColumn(name = "sala_id", referencedColumnName = "id"),
-				inverseJoinColumns = @JoinColumn(name= "lista_id",referencedColumnName = "id")
-				)
-	private Set<TerminskaListaProjekcija> terminskirasporedsala = new HashSet<>();
+	@OneToMany(mappedBy = "sala", cascade = CascadeType.ALL)
+	private Set<TerminskaListaProjekcija> terminskirasporedfilm = new HashSet<>();
+	
 }

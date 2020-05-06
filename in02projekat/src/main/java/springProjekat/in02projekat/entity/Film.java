@@ -33,25 +33,14 @@ public class Film implements Serializable {
 		    inverseJoinColumns = @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
 			)
 	private Set<Korisnik> korisnici = new HashSet<Korisnik>();
-	 
-	@ManyToMany
-	@JoinTable(name = "Biti_odgledani",
-			joinColumns = @JoinColumn (name = "film_id", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
-			)
-	private Set<Korisnik> buducikorisnici = new HashSet<Korisnik>();
 	
-	@OneToMany(mappedBy = "film")
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
 	private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();
 	
-	@ManyToMany
-	@JoinTable(name = "TerminskiRaporedFilm",
-				joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "id"),
-				inverseJoinColumns = @JoinColumn(name= "lista_id",referencedColumnName = "id")
-				)
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
 	private Set<TerminskaListaProjekcija> terminskirasporedfilm = new HashSet<>();
 	
-	@OneToMany(mappedBy = "film")
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
 	private Set<Ocena> ocene= new HashSet<>(); 
 	
 	public Long getId() {

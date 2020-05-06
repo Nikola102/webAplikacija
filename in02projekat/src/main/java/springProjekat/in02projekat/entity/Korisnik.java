@@ -48,12 +48,12 @@ public class Korisnik implements Serializable {
 	private Set <Film> odgledano = new HashSet<>();
 	
 	@ManyToMany(mappedBy = "buducikorisnici")
-	private Set<Film> zagledati = new HashSet<Film>();
+	private Set<TerminskaListaProjekcija> zagledati = new HashSet<>();
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Bioskop bioskop;
 	
-	@OneToMany(mappedBy = "korisnik")
+	@OneToMany(mappedBy = "korisnik", cascade = CascadeType.ALL)
 	private Set<Ocena> ocene= new HashSet<>(); 
 	
 	public Long getId() {

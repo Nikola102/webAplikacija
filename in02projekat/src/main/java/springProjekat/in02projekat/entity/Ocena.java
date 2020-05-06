@@ -10,10 +10,10 @@ public class Ocena implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Korisnik korisnik;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Film film;
 	
 	@Column

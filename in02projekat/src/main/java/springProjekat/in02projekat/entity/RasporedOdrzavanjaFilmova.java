@@ -11,10 +11,10 @@ public class RasporedOdrzavanjaFilmova implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Film film;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Bioskop bioskop;
 	
 	@Column
