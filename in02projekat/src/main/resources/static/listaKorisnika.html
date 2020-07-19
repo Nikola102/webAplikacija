@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Korisnici</title>
+    <meta charset="utf-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css"></link>
+    <link rel="stylesheet" href="css/style.css"></link>
+    <script src="js/korisnikList.js"></script>
+    <script src="js/regulacijaDugmadi.js"></script>
+
+<head>
+<body>
+    <div class="container text">
+        <ul class="nav nav-pills nav-inline pull-right">
+            <!-- na klik imena preci na pregled profila -->
+            <li id = "dugmeKorisnik"><a id = "placeHolderUsername" href="#">Ne treba da se pojavi</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li id = "dugmeRegistracija"><a href="registracijaKorisnika.html">Register</a></li>
+            <li id = "dugmeLogin"><a href="loginKorisnika.html">Login</a></li>
+            <li id = "dugmeLogout"><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="cointainer">   
+        <div class = "jumbotron">
+            <h1>Korisnici</h1>
+            <div class="table-responsive">
+                <table class="table" id="korisnici">
+                    <tr>
+                        <th>Id</th>
+                        <th>Ime</th>
+                        <th>Prezime</th>
+                        <th>Pozicija</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

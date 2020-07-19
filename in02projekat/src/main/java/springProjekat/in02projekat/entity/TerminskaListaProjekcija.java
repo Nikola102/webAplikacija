@@ -20,8 +20,7 @@ public class TerminskaListaProjekcija implements Serializable{
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Sala sala;
-
-	
+		
 	@ManyToMany
 	@JoinTable(name = "Biti_odgledani",
 			joinColumns = @JoinColumn (name = "projekcija_id", referencedColumnName = "id"),
@@ -39,6 +38,19 @@ public class TerminskaListaProjekcija implements Serializable{
 	private Date date;
 	
 	
+	public TerminskaListaProjekcija() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public TerminskaListaProjekcija(Film film, Sala sala, int cena, Date date) {
+		super();
+		this.film = film;
+		this.sala = sala;
+		Cena = cena;
+		this.date = date;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

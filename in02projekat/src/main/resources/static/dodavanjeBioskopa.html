@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bioskop101</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css"></link>
+  <link rel="stylesheet" href="css/style.css"></link>
+  <script src="js/bioskopDodavanje.js"></script>
+  <script src = "js/regulacijaDugmadi.js"></script>
+
+</head>
+<body>		
+	<div class="container text">
+		<ul class="nav nav-pills nav-inline pull-right">
+			<!-- na klik imena preci na pregled profila -->
+			<li id = "dugmeKorisnik"><a id = "placeHolderUsername" href="#">Ne treba da se pojavi</a></li>
+			<li><a href="index.html">Home</a></li>
+			<li id = "dugmeRegistracija"><a href="registracijaKorisnika.html">Register</a></li>
+	    	<li id = "dugmeLogin"><a href="loginKorisnika.html">Login</a></li>
+	    	<li id = "dugmeLogout"><a href="#">Logout</a></li>
+		</ul>
+	</div>
+
+	<div class="container">
+		<div class ="jumbotron">
+		<form id="addBioskopForm">
+			<div class="form-group">
+				<label for="name">Name:</label>
+			    <input id="name" type="text" class="form-control inputlg" />
+			</div>
+			<div class="form-group">
+			    <label for="adress">Adress:</label>
+			    <input  id="adress" type="text" class="form-control inputlg"/>
+			</div>    
+			<div class="form-group">
+			    <label for="telefon">Telefon:</label>
+				<input id="telefon" type="text" name="telefon" class="form-control">
+			</div>
+			<div class ="form-group">
+				<label for="email">E-Mail:</label>
+				<input id="email" type="email" name="email" class="form-control">
+			</div>
+
+			<div class="form-group">
+ 				<label for="slekcijaMenadzera">Inicijalni menadzer:</label>
+  				<select class="form-control" id="slekcijaMenadzera">
+ 				</select>
+			</div> 
+
+			<!-- <div class="form-group">
+				<div class="form-check">
+ 					<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					<label class="form-check-label" for="defaultCheck1">
+   					Default checkbox
+  					</label>
+				</div>
+
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" id="radioM" name="radioUloga" value="Menadzer">
+				  <label class="form-check-label" for="radioM">Menadzer</label>
+				</div>
+			</div> -->
+
+
+				<button id="formBetn" 
+				class="btn btn-primary btn-lg btn-block" 
+				type="submit" value="Register">Submit</button>			
+	 	</form>
+	 	</div>
+	</div>
+
+</body>
+</html>

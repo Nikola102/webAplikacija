@@ -19,20 +19,36 @@ public class Bioskop implements Serializable {
 	private String adresa;
 	
 	@Column
-	private int brojtelefona;
+	private String brojtelefona;
 	
 	@Column
 	private String email;
 	
-	@OneToMany(mappedBy = "bioskop", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
-	private Set <Korisnik> menadzeri = new HashSet<>();
+	@ManyToMany
+	@JoinTable(name = "menadzment" ,
+			joinColumns = @JoinColumn(name = "bioskop_id", referencedColumnName = "id"),
+		    inverseJoinColumns = @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
+			)
+	private Set<Korisnik> menadzeri = new HashSet<Korisnik>();
+
 	
 	@OneToMany(mappedBy = "bioskop", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Sala> sale = new HashSet<Sala>();
 
-	@OneToMany(mappedBy = "bioskop")
-	private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();
+	//@OneToMany(mappedBy = "bioskop")
+	//private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();
 	
+	public Bioskop() {
+	}
+	
+	public Bioskop(String naziv, String adresa, String brojtelefona, String email) {
+		super();
+		this.naziv = naziv;
+		this.adresa = adresa;
+		this.brojtelefona = brojtelefona;
+		this.email = email;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -57,11 +73,11 @@ public class Bioskop implements Serializable {
 		this.adresa = adresa;
 	}
 
-	public int getBrojTelefona() {
+	public String getBrojTelefona() {
 		return brojtelefona;
 	}
 
-	public void setBrojTelefona(int brojTelefona) {
+	public void setBrojTelefona(String brojTelefona) {
 		this.brojtelefona = brojTelefona;
 	}
 

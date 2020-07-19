@@ -18,6 +18,25 @@ public class Ocena implements Serializable{
 	
 	@Column
 	private int dataocena;
+	
+	public Ocena() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Ocena(Long id, Korisnik korisnik, Film film, int dataocena) {
+		super();
+		this.id = id;
+		this.korisnik = korisnik;
+		this.film = film;
+		this.dataocena = dataocena;
+	}
+
+	public Ocena(Korisnik korisnik, Film film, int dataocena) {
+		super();
+		this.korisnik = korisnik;
+		this.film = film;
+		this.dataocena = dataocena;
+	}
 
 	public Long getId() {
 		return id;

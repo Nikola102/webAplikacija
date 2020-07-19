@@ -23,9 +23,6 @@ public class Film implements Serializable {
 	
 	@Column
 	private int trajanje;
-		
-	@Column
-	private double srednjaocena;
 	
 	@ManyToMany
 	@JoinTable(name = "Odgledani_filmovi" ,
@@ -34,8 +31,8 @@ public class Film implements Serializable {
 			)
 	private Set<Korisnik> korisnici = new HashSet<Korisnik>();
 	
-	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
-	private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();
+	//@OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
+	//private Set<RasporedOdrzavanjaFilmova> raspored = new HashSet<>();
 	
 	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
 	private Set<TerminskaListaProjekcija> terminskirasporedfilm = new HashSet<>();
@@ -83,18 +80,10 @@ public class Film implements Serializable {
 		this.trajanje = trajanje;
 	}
 
-	public double getSrednjaocena() {
-		return srednjaocena;
-	}
-
-	public void setSrednjaocena(double srednjaocena) {
-		this.srednjaocena = srednjaocena;
-	}
-
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", naziv=" + naziv + ", opis=" + opis + ", zanr=" + zanr + ", trajanje=" + trajanje
-				 + ", srednjaocena=" + srednjaocena + "]";
+				 + "]";
 	}
 
 	

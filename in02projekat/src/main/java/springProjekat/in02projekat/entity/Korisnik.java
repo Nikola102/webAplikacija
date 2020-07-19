@@ -43,6 +43,23 @@ public class Korisnik implements Serializable {
 	
 	@Column
 	private Boolean active;
+	
+	public Korisnik() {
+	}
+
+	public Korisnik(String username, String password, String name, String surname, String phonenumber, String mail,
+			Date birthday, String role, Boolean active) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.phonenumber = phonenumber;
+		this.mail = mail;
+		this.birthday = birthday;
+		this.role = role;
+		this.active = active;
+	}
 
 	@ManyToMany(mappedBy = "korisnici")
 	private Set <Film> odgledano = new HashSet<>();
@@ -50,12 +67,46 @@ public class Korisnik implements Serializable {
 	@ManyToMany(mappedBy = "buducikorisnici")
 	private Set<TerminskaListaProjekcija> zagledati = new HashSet<>();
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Bioskop bioskop;
+	@ManyToMany(mappedBy = "menadzeri")
+	private Set<Bioskop> bioskopi = new HashSet<>();
 	
 	@OneToMany(mappedBy = "korisnik", cascade = CascadeType.ALL)
 	private Set<Ocena> ocene= new HashSet<>(); 
 	
+	
+	
+	public Set<Film> getOdgledano() {
+		return odgledano;
+	}
+
+	public void setOdgledano(Set<Film> odgledano) {
+		this.odgledano = odgledano;
+	}
+
+	public Set<TerminskaListaProjekcija> getZagledati() {
+		return zagledati;
+	}
+
+	public void setZagledati(Set<TerminskaListaProjekcija> zagledati) {
+		this.zagledati = zagledati;
+	}
+
+	public Set<Bioskop> getBioskopi() {
+		return bioskopi;
+	}
+
+	public void setBioskopi(Set<Bioskop> bioskopi) {
+		this.bioskopi = bioskopi;
+	}
+
+	public Set<Ocena> getOcene() {
+		return ocene;
+	}
+
+	public void setOcene(Set<Ocena> ocene) {
+		this.ocene = ocene;
+	}
+
 	public Long getId() {
 		return Id;
 	}
